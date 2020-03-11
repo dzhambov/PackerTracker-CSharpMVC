@@ -29,7 +29,7 @@ namespace Packer.Models
 
         public static void ClearAll()
         {
-            _instances.Clear()
+            _instances.Clear();
         }
 
         public static Tracker Find(int searchId)

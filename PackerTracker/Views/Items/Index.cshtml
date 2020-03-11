@@ -1,0 +1,17 @@
+@using Packer.Models;
+
+<h1>Trips you are planning:</h1>
+@if (Model.Count == 0)
+{
+    <p>There are no trips in yout list.</p>
+}
+<ul>
+    @foreach (Tracker tracker in Model)
+    {
+        <li><a href='/lists/@tracker.Id'>@tracker.TripType</a></li>
+    }
+    </ul>
+
+    <a href="/lists/new">Add a new trip.</a>
+
+    

@@ -31,5 +31,22 @@ namespace Packer.Tests
 
             Assert.AreEqual(newTracker, result);
         }
+
+        [TestMethod]
+        public void SetTripType_SetType_String()
+        {
+            string tripType = "Beach";
+            string gear = "Umbrella";
+            string destination = "Costa Rica";
+            string directions = "Follow your instinct";
+
+            Tracker newTracker = new Tracker(tripType, gear, destination, directions);
+
+            string updateTripType = "Mountain";
+            newTracker.TripType = updateTripType;
+            string result = newTracker.TripType;
+
+            Assert.AreEqual(updateTripType, result);
+        }
     }
 }

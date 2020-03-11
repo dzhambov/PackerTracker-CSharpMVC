@@ -6,7 +6,7 @@ namespace Packer.Controllers
 {
     public class ItemsController : Controller
     {
-        [HttpGet("/list")]
+        [HttpGet("/lists")]
         public ActionResult Index()
         {
             List<Tracker> allTrackers = Tracker.GetAll();
@@ -17,6 +17,27 @@ namespace Packer.Controllers
         public ActionResult New()
         {
             return View();
+        }
+
+        [HttpPost("/lists")]
+        public ActionResult Create(string tripType, string gear, string destination, string directions)
+        {
+            Tracker myTracker = new Tracker(tripType, gear, destination, directions);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("/lists/delete")]
+        public ActionResult DeleteAll()
+        {
+            Tracker.ClearAll();
+            return View();
+        }
+
+        [HttpGet("/lists/{id}")]
+        public ActionResult Show(int id)
+        {
+            Tracker foundTracker = Tracker.Find(id);
+            return View(foundTracker);
         }
     }
 }
